@@ -8,6 +8,7 @@
 - Java Spring
 - Docker and Docker Compose
 - NGINX Reverse Proxy and Load Balancer
+- HTML, JavaScript and Bootstrap
 
 ## Running:
 - Use `docker-compose up` command in `project` directory.
