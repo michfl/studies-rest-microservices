@@ -1,0 +1,142 @@
+version: '3.7'
+services:
+
+  db:
+    build: ./db/
+    restart: always
+    ports:
+      - "3306"
+    networks:
+      internal_nw:
+        ipv4_address: 172.28.1.31
+
+  msfile2:
+    build: ./microservices/2/file/
+    ports:
+      - "8080"
+    networks:
+      internal_nw:
+        ipv4_address: 172.28.1.24
+    volumes:
+      - type: bind
+        source: "G:\\Studies\\Semestr 5\\Architektury Uslug Internetowych\\Lab\\7\\project\\volume"
+        target: /home/api/upload
+    depends_on:
+      - db
+  msorder2:
+    build: ./microservices/2/order/
+    ports:
+      - "8080"
+    networks:
+      internal_nw:
+        ipv4_address: 172.28.1.23
+    depends_on:
+      - db
+  msdelivery2:
+    build: ./microservices/2/delivery/
+    ports:
+      - "8080"
+    networks:
+      internal_nw:
+        ipv4_address: 172.28.1.22
+    depends_on:
+      - db
+      - msorder2
+      - msfile2
+  msgateway2:
+    build: ./microservices/2/gateway/
+    ports:
+      - "8080"
+    networks:
+      internal_nw:
+        ipv4_address: 172.28.1.21
+
+  msfile1:
+    build: ./microservices/1/file/
+    ports:
+      - "8080"
+    networks:
+      internal_nw:
+        ipv4_address: 172.28.1.14
+    volumes:
+      - type: bind
+        source: "G:\\Studies\\Semestr 5\\Architektury Uslug Internetowych\\Lab\\7\\project\\volume"
+        target: /home/api/upload
+    depends_on:
+      - db
+  msorder1:
+    build: ./microservices/1/order/
+    ports:
+      - "8080"
+    networks:
+      internal_nw:
+        ipv4_address: 172.28.1.13
+    depends_on:
+      - db
+  msdelivery1:
+    build: ./microservices/1/delivery/
+    ports:
+      - "8080"
+    networks:
+      internal_nw:
+        ipv4_address: 172.28.1.12
+    depends_on:
+      - db
+      - msorder1
+      - msfile1
+  msgateway1:
+    build: ./microservices/1/gateway/
+    ports:
+      - "8080"
+    networks:
+      internal_nw:
+        ipv4_address: 172.28.1.11
+
+  proxy_api:
+    build: ./proxy/api/
+    ports:
+      - "80"
+    networks:
+      public_nw:
+        ipv4_address: 172.28.0.5
+      internal_nw:
+        ipv4_address: 172.28.1.2
+
+
+
+  front1:
+    build: ./front/
+    ports:
+      - "80"
+    networks:
+      public_nw:
+        ipv4_address: 172.28.0.4
+  front2:
+    build: ./front/
+    ports:
+      - "80"
+    networks:
+      public_nw:
+        ipv4_address: 172.28.0.3
+  
+  proxy_gui:
+    build: ./proxy/gui/
+    ports:
+      - "80:80"
+    networks:
+      public_nw:
+        ipv4_address: 172.28.0.2
+
+
+
+networks:
+  public_nw:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.28.0.0/24
+  internal_nw:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.28.1.0/24

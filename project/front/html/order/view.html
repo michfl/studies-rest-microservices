@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="description" content="View for gateway project"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>AUI Lab View</title>
+        <script type="module" src="js/view.js" defer="defer"></script>
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <!-- Bootstrap Font Icon CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
+            <div class="container-fluid">
+                <a class="navbar-brand px-3"><i class="bi bi-book"></i> View</a>
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav">
+                        <a href="../index.html" class="nav-item nav-link">Home</a>
+                        <a href="../delivery/method/list.html" class="nav-item nav-link">Delivery methods</a>
+                        <a href="../invoice/list.html" class="nav-item nav-link">Invoices</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="container-fluid p-3">
+            <h3>Order</h3>
+            <p class="lead">View</p>
+            <hr/>
+            <div class="card bg-light w-auto">
+                <div class="card-body">
+                    <h4 id="id">id</h4>
+                    <ul class="list-unstyled">
+                        <li>Client: <span id="client">client</span></li>
+                        <li>Payment: <span id="payment">payment</span></li>
+                        <li>Delivery method: <span id="delivery_method">delivery method</span></li>
+                    </ul>
+                </div>
+            </div>
+            <hr/>
+            <div class="card bg-secondary w-auto text-white" id="invoice_card">
+                <div class="card-body">
+                    <h5>Invoice</h5>
+                    <ul class="list-unstyled">
+                        <li>Id: <span id="invoice_id">id</span></li>
+                        <li>Issuer: <span id="issuer">issuer</span></li>
+                        <li>Issue date: <span id="issue_date">issue date</span></li>
+                        <li>File: <a id="download" class="text-white" href="#">download</a></li>
+                    </ul>
+                    <button class="btn btn-danger btn-sm" id="delete_invoice">Delete</button>
+                </div>
+            </div>
+            <a href="#" id="link_invoice" class="link-secondary">Add invoice</a>
+        </div>
+        <!-- Bootstrap JS Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    </body>
+</html>
