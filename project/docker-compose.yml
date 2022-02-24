@@ -19,7 +19,7 @@ services:
         ipv4_address: 172.28.1.24
     volumes:
       - type: bind
-        source: "G:\\Studies\\Semestr 5\\Architektury Uslug Internetowych\\Lab\\7\\project\\volume"
+        source: "C:\\absolute\\file\\path\\to\\project\\volume"
         target: /home/api/upload
     depends_on:
       - db
@@ -60,7 +60,7 @@ services:
         ipv4_address: 172.28.1.14
     volumes:
       - type: bind
-        source: "G:\\Studies\\Semestr 5\\Architektury Uslug Internetowych\\Lab\\7\\project\\volume"
+        source: "C:\\absolute\\file\\path\\to\\project\\volume"
         target: /home/api/upload
     depends_on:
       - db
