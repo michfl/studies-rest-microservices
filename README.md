@@ -2,7 +2,7 @@
 
 ## About:
 - Simple microservices storing data for delivery methods, orders and invoice files in `.pdf` format.
-- Additionally, a simple website has been created for viewing and managing uploaded data.
+- Additionally, a simple website has been created for viewing and managing uploaded data, available at `localhost`.
 
 ## Used technologies:
 - Java Spring
